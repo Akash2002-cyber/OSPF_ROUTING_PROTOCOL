@@ -1,0 +1,188 @@
+First take the router, switch and PC's required to install the single lan.
+
+{I have to take a  4 Computers, 1 (2960-24 TT) Switch , 5 (2811) Routers}
+
+Then connect each computer to the switch
+
+{ each computers and switch can be connected through COPPER STRAIGHT THROUGH cables.}  
+
+Then connect the switch and the router.
+
+And now to setup router's serial Ports.
+
+{ # Go to the Router's Physical Modules.
+
+  # Switch off the Router.
+
+  # And pickup a HWIC-2T Module.
+
+  # Drag the module and drop the port.
+ 
+  # Switch on the Router.
+
+Follow the step to each other Routers.
+
+
+Now connected all types of devices and then choose the IP address for each computer and configure it.
+{I will take a C class IP Address.}
+{Each Computer IP Configuration
+ 
+    #Go to Desktop
+    #Click IP configuration
+    #Enter IP address, Subnet mask, Default Gateway
+    #And click close option }
+
+The next step is to configure the router.
+
+{Router Configuration Comments
+
+   #enable
+   #config terminal
+   #interface fa 0/0
+   #ip address (ip Address)(subnet mask)
+   #no shutdown
+   #exit 
+
+   # interface se 0/0/0
+   #ip address (ip Address)(subnet mask)
+   #no shutdown
+   #exit
+
+   # interface se 0/0/1
+   #ip address (ip Address)(subnet mask)
+   #no shutdown
+   #exit 
+
+Follow the step to each other Routers.
+
+
+Next we have to configure the OSPF
+
+Go to CLI 
+
+OSPF Configuration Comments 
+
+{Router 1}
+----------
+  $ enable
+
+  $ config terminal 
+
+  $ route ospf 1
+
+  $ network (network address) (wildcard mask) area 1
+
+  $ network (network address) (wildcard mask) area 1
+
+  $ exit
+  
+  $ exit
+
+  $ write
+
+
+(important****  network address is which network IP address can be used in the lan.)
+
+
+{Router 2}
+----------
+  $ enable
+
+  $ config terminal 
+
+  $ route ospf 2
+
+  $ network (network address) (wildcard mask) area 1
+
+  $ network (network address) (wildcard mask) area 0
+
+  $ exit
+  
+  $ exit
+
+  $ write
+
+
+(important****  network address is which network IP address can be used in the lan.)
+
+
+
+{Router 3}
+----------
+  $ enable
+
+  $ config terminal 
+
+  $ route ospf 3
+
+  $ network (network address) (wildcard mask) area 0
+
+  $ network (network address) (wildcard mask) area 0
+
+  $ exit
+  
+  $ exit
+
+  $ write
+
+
+(important****  network address is which network IP address can be used in the lan.)
+
+
+
+{Router 4}
+----------
+  $ enable
+
+  $ config terminal 
+
+  $ route ospf 4
+
+  $ network (network address) (wildcard mask) area 0
+
+  $ network (network address) (wildcard mask) area 2
+
+  $ exit
+  
+  $ exit
+
+  $ write
+
+
+(important****  network address is which network IP address can be used in the lan.)
+
+
+
+{Router 5}
+----------
+  $ enable
+
+  $ config terminal 
+
+  $ route ospf 5
+
+  $ network (network address) (wildcard mask) area 2
+
+  $ network (network address) (wildcard mask) area 2
+
+  $ exit
+  
+  $ exit
+
+  $ write
+
+
+(important****  network address is which network IP address can be used in the lan.)
+
+
+
+* THE OSPF ROUTING PROTOCOL IS FINISHED. *
+-------------------------------------------
+
+
+
+
+
+
+
+ 
